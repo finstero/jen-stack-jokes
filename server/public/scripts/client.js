@@ -5,6 +5,7 @@ $( document ).ready( onReady );
 function onReady() {
     console.log('DOM ready');
     getJokes();
+    $('#addJokeButton').on('click', handleAddJoke);
 }
 
 //get all jokes from server and display on DOM
@@ -13,8 +14,12 @@ function getJokes(){
         url: '/jokes',
         method: 'GET'
     }).then(response =>{
-        console.log(response)
+        // console.log(response)
+
+        //empty all jokes from DOM
         $('#outputDiv').empty();
+
+        //loop through all jokes recieved from server and display on DOM
         for (let joke of response){
             $('#outputDiv').append(`
                 <p>By: <span id='whoseJoke'>${joke.whoseJoke}</span></p>
@@ -25,3 +30,22 @@ function getJokes(){
         }
     });
 }
+
+function handleAddJoke(){
+
+    //create newJoke object to send to server
+    let newJoke = {
+        whoseJoke: $('#whoseJokeIn').val(),
+        jokeQuestion: $('#questionIn').val(),
+        punchLine: $('#punchlineIn').val()
+    }
+
+    $.ajax({
+        url: '/jokes',
+        method: 'POST',
+        data: newJoke
+    }).then(response => {
+        console.log('post response', response);
+    });
+}
+

@@ -6,7 +6,7 @@ const PORT = 5000;
 // use bodyParser.urlencoded throughout the app with this:
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let jokes = [
+let jokes = [ 
   {
     whoseJoke: "Danny",
     jokeQuestion: "Why do scuba divers fall backwards out of boats?",
@@ -43,7 +43,10 @@ app.get('/jokes', (req, res) =>{
 })
 
 
-
+app.post('/jokes', (req, res) => {
+  console.log('req.body from client.js', req.body)
+  res.sendStatus(200);
+})
 
 
 
