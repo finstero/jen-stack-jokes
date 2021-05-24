@@ -29,8 +29,10 @@ function getJokes(){
             `)
         }
     });
-}
+} // end getJokes
 
+// creates and sends newJoke object to server
+// calls getJokes at the end to append new joke to dom with other jokes at same time
 function handleAddJoke(){
 
     //create newJoke object to send to server
@@ -40,6 +42,7 @@ function handleAddJoke(){
         punchLine: $('#punchlineIn').val()
     }
 
+    //send newJoke object to server at /jokes
     $.ajax({
         url: '/jokes',
         method: 'POST',
@@ -47,5 +50,7 @@ function handleAddJoke(){
     }).then(response => {
         console.log('post response', response);
     });
-}
+
+    getJokes();
+} // end handleAddJoke
 
