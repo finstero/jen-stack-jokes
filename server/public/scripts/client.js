@@ -22,9 +22,9 @@ function getJokes(){
         //loop through all jokes recieved from server and display on DOM
         for (let joke of response){
             $('#outputDiv').append(`
-                <p>By: <span id='whoseJoke'>${joke.whoseJoke}</span></p>
-                <p id="questionHere">${joke.jokeQuestion}</p>
-                <p id="punchLineHere">${joke.punchLine}</p>
+                <p>By: <span>${joke.whoseJoke}</span></p>
+                <p>${joke.jokeQuestion}</p>
+                <p>${joke.punchLine}</p>
                 <p>*****</p> 
             `)
         }
@@ -56,6 +56,8 @@ function handleAddJoke(){
     });
 
     getJokes();
+
+    //clears inputs
     $('.jokeInput').val('');
 } // end handleAddJoke
 
