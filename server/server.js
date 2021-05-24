@@ -39,15 +39,15 @@ app.use(express.static('server/public'));
 
 // get route for /jokes sending jokes array 
 app.get('/jokes', (req, res) =>{
-  console.log('got to /jokes!');
+  // console.log('got to /jokes!');
   res.send(jokes);
 });
 
 // post route for /jokes recieving new joke object from client and pushing into jokes array
 app.post('/jokes', (req, res) => {
-  console.log('req.body from client.js', req.body)
+  // console.log('req.body from client.js', req.body)
   jokes.push(req.body);
-  res.sendStatus(200);
+  res.sendStatus(201);
 });
 
 

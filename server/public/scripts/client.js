@@ -28,6 +28,8 @@ function getJokes(){
                 <p>*****</p> 
             `)
         }
+    }).catch (function (error) {
+        alert('something went wrong with GET, try again');
     });
 } // end getJokes
 
@@ -49,8 +51,11 @@ function handleAddJoke(){
         data: newJoke
     }).then(response => {
         console.log('post response', response);
+    }).catch (function (error) {
+        alert('something went wrong with POST; try again!');
     });
 
     getJokes();
+    $('.jokeInput').val('');
 } // end handleAddJoke
 
