@@ -14,5 +14,14 @@ function getJokes(){
         method: 'GET'
     }).then(response =>{
         console.log(response)
+        $('#outputDiv').empty();
+        for (let joke of response){
+            $('#outputDiv').append(`
+                <p>By: <span id='whoseJoke'>${joke.whoseJoke}</span></p>
+                <p id="questionHere">${joke.jokeQuestion}</p>
+                <p id="punchLineHere">${joke.punchLine}</p>
+                <p>*****</p> 
+            `)
+        }
     });
 }
